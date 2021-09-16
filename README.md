@@ -61,7 +61,7 @@ The Player and Enemy scenes are responsible for updating the health and score. T
 extends Control
 
 func _on_Play_pressed():
-   get_tree().change_scene("res://Game.tscn")
+   var _scene = get_tree().change_scene("res://Game.tscn")
 
 func _on_Quit_pressed():
   get_tree().quit()
@@ -72,25 +72,22 @@ func _on_Quit_pressed():
 
 ## End-game screen
 
- * In the Scene menu, select New Scene. In the Scene panel, Create Root Node: select User Interface. Change the name of the Control node to "Menu"
- * Right-click on the Menu node and Add Child Node. Select Label. In the Inspector Panel, set the Label->Text="You Died!". Label->Align=Center, Label->Valign=Center. Control->Rect->Size x=1024, y=300.  Select Control->Custom Fonts->Font->New Dynamic Font. Select Font again, and select Edit. In the DynamicFont menu that appears, Select Font->FontData and choose Load. Open res://Assets/BebasNeueRegular.otf/. Select DynamicFont->Settings and set Size=60.
- * Right-click on the Menu node and Add Child Node. Select Button. Change the name of the node to "Play". In the Inspector Panel, set the Button->Text="Play Again?". Control->Rect->Position x=412, y=300. Control->Rect->Size x=200, y=60.  Select Control->Custom Fonts->Font->New Dynamic Font. Select Font again, and select Edit. In the DynamicFont menu that appears, Select Font->FontData and choose Load. Open res://Assets/BebasNeueRegular.otf/. Select DynamicFont->Settings and set Size=24.
+ * In the Scene menu, select New Scene. In the Scene panel, Create Root Node: select User Interface. Change the name of the Control node to "Die"
+ * Right-click on the Die node and Add Child Node. Select Label. In the Inspector Panel, set the Label->Text="You Died!". Label->Align=Center, Label->Valign=Center. Control->Rect->Size x=1024, y=300.  Select Control->Custom Fonts->Font->New Dynamic Font. Select Font again, and select Edit. In the DynamicFont menu that appears, Select Font->FontData and choose Load. Open res://Assets/BebasNeueRegular.otf/. Select DynamicFont->Settings and set Size=60.
+ * Right-click on the Die node and Add Child Node. Select Button. Change the name of the node to "Play". In the Inspector Panel, set the Button->Text="Play Again?". Control->Rect->Position x=412, y=300. Control->Rect->Size x=200, y=60.  Select Control->Custom Fonts->Font->New Dynamic Font. Select Font again, and select Edit. In the DynamicFont menu that appears, Select Font->FontData and choose Load. Open res://Assets/BebasNeueRegular.otf/. Select DynamicFont->Settings and set Size=24.
  * Right-click on the Play node and Duplicate. Change the name of the Play2 node to "Quit". In the Inspector Panel, set the Label->Text="Quit". Control->Rect->Position y=380.
- * Right-click on the Menu node and Attach Script. Create a new Menu folder, and save the script as res://Menu/Die.gd
- * Select the Play node and open the Node panel. Double-click on the pressed() signal and attach it to the Menu script
- * Select the Quit node and open the Node panel. Double-click on the pressed() signal and attach it to the Menu script
- * Replace the contents of Menu.gd with the following:
+ * Right-click on the Die node and Attach Script. In the Menu folder save the script as res://Menu/Die.gd
+ * Select the Play node and open the Node panel. Double-click on the pressed() signal and attach it to the Die script
+ * Select the Quit node and open the Node panel. Double-click on the pressed() signal and attach it to the Die script
+ * Replace the contents of Die.gd with the following:
 
 ```
 extends Control
 
-onready var global = get_node("/root/Global")
-
 func _on_Play_pressed():
-	global.score = 0
-	global.health = 100
-	global.level = 1
-	get_tree().change_scene("res://Game.tscn")
+	Global.score = 0
+	Global.health = 100
+	var _scene = get_tree().change_scene("res://Game.tscn")
 
 func _on_Quit_pressed():
 	get_tree().quit()
