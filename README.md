@@ -1,6 +1,8 @@
 # Exercise-02d-Menu-and-HUD
 Exercise for MSCH-C220, 16 September 2021
 
+A demonstration of this exercise is available at [https://youtu.be/tgZPOtYoJZ4](https://youtu.be/tgZPOtYoJZ4)
+
 This exercise is designed to explore control nodes and changing scenes. I am hoping this gives you what you need to complete your project.
 
 Fork this repository. When that process has completed, make sure that the top of the repository reads [your username]/Exercise-02d-Menu-and-HUD. *Edit the LICENSE and replace BL-MSCH-C220-F21 with your full name.* Commit your changes.
